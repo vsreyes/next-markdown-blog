@@ -5,7 +5,7 @@ import marked from 'marked';
 import Link from 'next/link';
 
 export default function PostPage({
-  frontmatter: { title, date, conver_image },
+  frontmatter: { title, date, cover_image },
   slug,
   content,
 }) {
@@ -41,7 +41,7 @@ export async function getStaticPaths() {
   };
 }
 
-export async function getStaticPaths({ params: { slug } }) {
+export async function getStaticProps({ params: { slug } }) {
   const markdownWithMeta = fs.readFileSync(
     path.join('posts', slug + '.md'),
     'utf-8'
